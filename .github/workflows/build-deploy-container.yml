@@ -7,8 +7,8 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  WEBAPP_IMAGE_NAME: bigcapital/bigcapital-webapp
-  SERVER_IMAGE_NAME: bigcapital/bigcapital-server
+  WEBAPP_IMAGE_NAME: poudelprakash/bigcapital-webapp
+  SERVER_IMAGE_NAME: poudelprakash/bigcapital-server
 
 jobs:
   build-publish-webapp:
@@ -40,7 +40,7 @@ jobs:
             context: .
             file: ./packages/webapp/Dockerfile
             push: true
-            tags: ghcr.io/bigcapitalhq/webapp:latest
+            tags: ghcr.io/poudelprakash/webapp:latest
             labels: ${{ steps.meta.outputs.labels }}
 
       # Send notification to Slack channel.
@@ -71,7 +71,7 @@ jobs:
           context: ./
           file: ./packages/server/Dockerfile
           push: true
-          tags: ghcr.io/bigcapitalhq/server:latest
+          tags: ghcr.io/poudelprakash/server:latest
           labels: ${{ steps.meta.outputs.labels }}
 
       # Send notification to Slack channel.
