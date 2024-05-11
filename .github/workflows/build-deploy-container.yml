@@ -6,6 +6,7 @@ on:
   workflow_dispatch:
 
 env:
+  REGISTRY: ghcr.io
   WEBAPP_IMAGE_NAME: poudelprakash/webapp
   SERVER_IMAGE_NAME: poudelprakash/server
 
