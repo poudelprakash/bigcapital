@@ -53,7 +53,7 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           labels: ${{ steps.meta.outputs.labels }}
-          tags: poudelprakash/webapp:latest, poudelprakash/webapp:${{github.ref_name}}
+          tags: ghcr.io/poudelprakash/webapp:latest, ghcr.io/poudelprakash/webapp:${{github.ref_name}}
 
       - name: Export digest
         run: |
@@ -106,7 +106,7 @@ jobs:
           file: ./packages/server/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: poudelprakash/server:latest, poudelprakash/server:${{github.ref_name}}
+          tags: ghcr.io/poudelprakash/server:latest, ghcr.io/poudelprakash/server:${{github.ref_name}}
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Export digest
