@@ -4,6 +4,7 @@ on:
     branches:
       - main
       - develop
+      - feat/oidc-integration
     paths:
       - '**.ts'
       - '**.tsx'

@@ -7,8 +7,8 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  WEBAPP_IMAGE_NAME: bigcapital/bigcapital-webapp
-  SERVER_IMAGE_NAME: bigcapital/bigcapital-server
+  WEBAPP_IMAGE_NAME: poudelprakash/bigcapital-webapp
+  SERVER_IMAGE_NAME: poudelprakash/bigcapital-server
 
 jobs:
   build-publish-webapp:
@@ -59,7 +59,7 @@ jobs:
           file: ./packages/webapp/Dockerfile
           platforms: ${{ matrix.platform }}
           push: true
-          tags: ghcr.io/bigcapitalhq/webapp:latest, ghcr.io/bigcapitalhq/webapp:${{github.ref_name}}
+          tags: ghcr.io/poudelprakash/webapp:latest, ghcr.io/poudelprakash/webapp:${{github.ref_name}}
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Export digest
@@ -76,10 +76,10 @@ jobs:
           if-no-files-found: error
           retention-days: 1
       # Send notification to Slack channel.
-      - name: Slack Notification built and published webapp container successfully.
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+      # - name: Slack Notification built and published webapp container successfully.
+      #   uses: rtCamp/action-slack-notify@v2
+      #   env:
+      #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
 
   build-publish-server:
     name: Build and deploy server container
@@ -116,7 +116,7 @@ jobs:
           file: ./packages/server/Dockerfile
           platforms: ${{ matrix.platform }}
           push: true
-          tags: ghcr.io/bigcapitalhq/server:latest, ghcr.io/bigcapitalhq/server:${{github.ref_name}}
+          tags: ghcr.io/poudelprakash/server:latest, ghcr.io/poudelprakash/server:${{github.ref_name}}
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Export digest
@@ -134,7 +134,7 @@ jobs:
           retention-days: 1
           
       # Send notification to Slack channel.
-      - name: Slack Notification built and published server container successfully.
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+      # - name: Slack Notification built and published server container successfully.
+      #   uses: rtCamp/action-slack-notify@v2
+      #   env:
+      #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
